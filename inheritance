@@ -1,0 +1,47 @@
+#Inheritance
+class Student:
+    #create a class with same method as another class
+    def __init__(self, name, perfomance):
+        self.name = name
+        self.perfomance = perfomance
+    #another method
+    def marks(self):   
+        return(F'good morning,{self.name},You have performed,{self.perfomance}')
+        
+student = Student('John', 'Extra-ordinary')
+print(student.marks())
+
+#Another class with same method as above
+class Teacher(Student):
+    def __init__(self, name, perfomance):
+        self.name = name
+        self.perfomance = perfomance  
+                        
+teacher = Teacher('Kevin','Extra-ordinary')
+print(teacher.marks())
+print(isinstance(student, Student))
+
+#python overriding method
+class Director:
+    #initialize class to two attributes
+    def __init__(self,name,gross_pay):
+        self.name = name
+        self.gross_pay = gross_pay
+    def get_payment(self):
+        return self.gross_pay
+class Manager(Director):
+    def __init__(self,name,gross_pay, net_pay):
+        super().__init__(name,gross_pay)
+        self.net_pay = net_pay
+    def get_payment(self):
+        return super().get_payment()+self.net_pay
+
+manager = Manager('Mutuma',500, 380)
+print(manager.get_payment())
+director = Director('Timothy', 400)
+print(director.get_payment())
+
+
+
+
+
